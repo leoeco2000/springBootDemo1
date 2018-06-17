@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,7 +22,7 @@ public class LucyController {
   @Autowired
   User user;
 
-  @RequestMapping(value = "/user")
+  @RequestMapping(value = "/userFormClass")
   public String user() {
     return user.getName() + user.getAge();
   }

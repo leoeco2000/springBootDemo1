@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(value = "classpath:test.properties")
-@ConfigurationProperties(prefix = "com.forezp")
+@ConfigurationProperties(prefix = "com.example.demo")
 public class User {
   private String name;
   private int age;
