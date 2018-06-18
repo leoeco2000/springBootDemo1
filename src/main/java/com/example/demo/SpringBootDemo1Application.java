@@ -6,14 +6,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@EnableCaching
 @MapperScan("com.example.demo.mapper")//将项目中对应的mapper类的路径加进来就可以了
 public class SpringBootDemo1Application {
-
   public static void main(String[] args) {
     SpringApplication.run(SpringBootDemo1Application.class, args);
   }
@@ -21,7 +22,6 @@ public class SpringBootDemo1Application {
   @Bean
   public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
     return args -> {
-
       System.out.println("Let's inspect the beans provided by Spring Boot:");
 
       String[] beanNames = ctx.getBeanDefinitionNames();

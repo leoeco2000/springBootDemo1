@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
-@Configuration
-@ComponentScan
+//@Configuration
+//@ComponentScan
 public class RedsissonConfig {
     @Bean(destroyMethod="shutdown")
     RedissonClient redisson(@Value("classpath:/conf/redisson.yaml") Resource configFile) throws IOException {

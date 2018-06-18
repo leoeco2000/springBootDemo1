@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ClassUtils;
 import io.netty.channel.nio.NioEventLoopGroup;
 
-@ConfigurationProperties(prefix = "spring.redisson")
-@Configuration
+//@ConfigurationProperties(prefix = "spring.redisson")
+//@Configuration
 public class RedissonConfigByProperties{
 
     private String address;
@@ -60,8 +60,8 @@ public class RedissonConfigByProperties{
                 .setIdleConnectionTimeout(idleConnectionTimeout)
                 .setPingTimeout(pingTimeout)
                 .setPassword(password);
-        Codec codec=(Codec)ClassUtils.forName(getCodec(),ClassUtils.getDefaultClassLoader()).newInstance();
-        config.setCodec(codec);
+//        Codec codec=(Codec)ClassUtils.forName(getCodec(),ClassUtils.getDefaultClassLoader()).newInstance();
+//        config.setCodec(codec);
         config.setThreads(thread);
         config.setEventLoopGroup(new NioEventLoopGroup());
         config.setUseLinuxNativeEpoll(false);
