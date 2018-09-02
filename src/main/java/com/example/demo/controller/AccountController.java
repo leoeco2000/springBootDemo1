@@ -19,7 +19,7 @@ public class AccountController {
     IAccountService accountService;
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public  List<Account> getAccounts(){
+    public @ResponseBody List<Account> getAccounts(){
        return accountService.findAccountList();
     }
 

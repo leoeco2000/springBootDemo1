@@ -1,21 +1,24 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import com.example.demo.bean.Book;
-import com.example.demo.service.IAccountService;
-import com.example.demo.service.impl.BookService;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import com.example.demo.bean.Book;
+import com.example.demo.service.impl.BookService;
 
-@RestController
+@Controller
 public class HelloController {
 
   @Autowired
   BookService bookService;
   
     @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
+    public String index(HashMap<String, Object> map) {
+//        return "Greetings from Spring Boot!";
+      map.put("hello", "欢迎进入HTML页面");
+      return "page/demo/demo";
     }
     
     @RequestMapping("/books")
