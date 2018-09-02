@@ -28,10 +28,35 @@ $(document).ready(function() { // 注释一
 	var UserItemView = Backbone.View.extend({
 		tagName : "li",
 		userItemTemplate : _.template($("#user-item-template").html()), // 绑定模板
+		events : {
+			"click .update_id": "updateMoney"
+		},
 		render : function() {
 			this.$el.html(this.userItemTemplate(this.model.toJSON()));
 			return this;
 		},
+		transitionTo: function(screenName, option) {
+			var cmconst = {};
+			cmconst.ROOT_PATH = "/account/";
+			if(option && option.isNewWindow) {
+				window.open(cmconst.ROOT_PATH + screenName);
+			} else {
+				location.href = cmconst.ROOT_PATH + screenName;
+			}
+		},
+		updateMoney: function(e){
+			var defer = $.Deferred();
+			var id = e.target.id;
+//			this.transitionTo('update/'+id);
+			$.ajax({
+				type: 'GET',
+				url: '/account/update/'+ id
+			})
+			.done(function(data){
+				$("#right").text(data);
+				return defer.resolve(data).promise();
+			});
+		}
 	});
 
 	// 定义UserListView，用来显示用户列表
@@ -67,4 +92,5 @@ $(document).ready(function() { // 注释一
 	});
 
 	var userListView = new UserListView();// 注释五
+
 });
