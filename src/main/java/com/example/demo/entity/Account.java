@@ -1,9 +1,15 @@
 package com.example.demo.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by fangzhipeng on 2017/4/20.
  */
-public class Account {
+public class Account implements Serializable {
+    /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
     private int id ;
     private String name ;
     private double money;

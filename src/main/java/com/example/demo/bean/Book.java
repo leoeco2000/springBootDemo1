@@ -14,8 +14,8 @@ public class Book implements Serializable {
   private String title;
 
   public Book(String isbn, String title) {
-      this.isbn = isbn;
-      this.title = title;
+    this.isbn = isbn;
+    this.title = title;
   }
 
   public String getIsbn() {
@@ -33,4 +33,5 @@ public class Book implements Serializable {
   public void setTitle(String title) {
     this.title = title;
   }
+
 }

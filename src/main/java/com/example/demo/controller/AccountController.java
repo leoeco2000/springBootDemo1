@@ -61,7 +61,9 @@ public class AccountController {
 
     @RequestMapping(value = "/update/{id}",method = RequestMethod.GET)
     public  int updateAccountById(@PathVariable("id") int id){
-        return accountService.updateAccountById(id);
+      int a = accountService.updateAccountById(id);
+      int b = accountService.updateAccountById(id+1);
+      return a+b;
     }
 
 }
