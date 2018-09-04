@@ -5,5 +5,6 @@ import com.example.demo.bean.Book;
 public interface BookRepository {
 
   Book getByIsbn(String isbn);
+  Book testThread();
 
 }

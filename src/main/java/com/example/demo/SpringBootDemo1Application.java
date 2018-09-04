@@ -24,56 +24,56 @@ import com.example.demo.redis.messageDeque.Receiver;
 @EnableCaching
 @MapperScan("com.example.demo.mapper") // 将项目中对应的mapper类的路径加进来就可以了
 public class SpringBootDemo1Application {
-  // public static void main(String[] args) {
-  // SpringApplication.run(SpringBootDemo1Application.class, args);
-  // }
+   public static void main(String[] args) {
+   SpringApplication.run(SpringBootDemo1Application.class, args);
+   }
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootDemo1Application.class);
-
-  @Bean
-  RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
-      MessageListenerAdapter listenerAdapter) {
-
-    RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-    container.setConnectionFactory(connectionFactory);
-    container.addMessageListener(listenerAdapter, new PatternTopic("chat"));
-
-    return container;
-  }
-
-  @Bean
-  MessageListenerAdapter listenerAdapter(Receiver receiver) {
-    return new MessageListenerAdapter(receiver, "receiveMessage");
-  }
-
-  @Bean
-  Receiver receiver(CountDownLatch latch) {
-    return new Receiver(latch);
-  }
-
-  @Bean
-  CountDownLatch latch() {
-    return new CountDownLatch(1);
-  }
-
-  @Bean
-  StringRedisTemplate template(RedisConnectionFactory connectionFactory) {
-    return new StringRedisTemplate(connectionFactory);
-  }
-
-  public static void main(String[] args) throws Exception {
-    ApplicationContext ctx = SpringApplication.run(SpringBootDemo1Application.class, args);
-
-    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
-    CountDownLatch latch = ctx.getBean(CountDownLatch.class);
-
-    LOGGER.info("Sending message...");
-    template.convertAndSend("chat", "Hello from Redis!");
-
-    latch.await();
-
-    System.exit(0);
-  }
+//  private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootDemo1Application.class);
+//
+//  @Bean
+//  RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
+//      MessageListenerAdapter listenerAdapter) {
+//
+//    RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+//    container.setConnectionFactory(connectionFactory);
+//    container.addMessageListener(listenerAdapter, new PatternTopic("chat"));
+//
+//    return container;
+//  }
+//
+//  @Bean
+//  MessageListenerAdapter listenerAdapter(Receiver receiver) {
+//    return new MessageListenerAdapter(receiver, "receiveMessage");
+//  }
+//
+//  @Bean
+//  Receiver receiver(CountDownLatch latch) {
+//    return new Receiver(latch);
+//  }
+//
+//  @Bean
+//  CountDownLatch latch() {
+//    return new CountDownLatch(1);
+//  }
+//
+//  @Bean
+//  StringRedisTemplate template(RedisConnectionFactory connectionFactory) {
+//    return new StringRedisTemplate(connectionFactory);
+//  }
+//
+//  public static void main(String[] args) throws Exception {
+//    ApplicationContext ctx = SpringApplication.run(SpringBootDemo1Application.class, args);
+//
+//    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+//    CountDownLatch latch = ctx.getBean(CountDownLatch.class);
+//
+//    LOGGER.info("Sending message...");
+//    template.convertAndSend("chat", "Hello from Redis!");
+//
+//    latch.await();
+//
+//    System.exit(0);
+//  }
 
 
   @Bean

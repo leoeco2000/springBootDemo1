@@ -16,6 +16,7 @@ public class HelloController {
     @RequestMapping("/")
     public String index(HashMap<String, Object> map) {
 //        return "Greetings from Spring Boot!";
+      bookService.testThread();
       map.put("hello", "欢迎进入HTML页面");
       return "page/demo/demo";
     }
