@@ -12,18 +12,18 @@ public class HelloController {
 
   @Autowired
   BookService bookService;
-  
-    @RequestMapping("/")
-    public String index(HashMap<String, Object> map) {
-//        return "Greetings from Spring Boot!";
-      bookService.testThread();
-      map.put("hello", "欢迎进入HTML页面");
-      return "page/demo/demo";
-    }
-    
-    @RequestMapping("/books")
-    public Book getBooks() {
-        return bookService.getByIsbn("1");
-    }
+
+  @RequestMapping("/demo")
+  public String index(HashMap<String, Object> map) {
+    // return "Greetings from Spring Boot!";
+    bookService.testThread();
+    map.put("hello", "欢迎进入HTML页面");
+    return "page/demo/demo";
+  }
+
+  @RequestMapping("/books")
+  public Book getBooks() {
+    return bookService.getByIsbn("1");
+  }
 
 }

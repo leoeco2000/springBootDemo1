@@ -1,10 +1,10 @@
-package com.example.demo.redis;
+package com.example.demo.redis.problem;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
-@Configuration
+//@Configuration
 public class LettuceRedisConfig_2_0 {
 
   @Bean
