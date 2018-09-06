@@ -6,52 +6,45 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import config.springsecurity.entity.UserVO;
-import config.springsecurity.service.SUserService;
+import config.springsecurity.entity.Msg;
+import config.springsecurity.service.SysUserService;
 
 @Controller
 public class IndexController {
 
   @Resource
-  private SUserService sUserService;
+  private SysUserService sysUserService;
 
   @RequestMapping("/home")
   public String home() {
     return "home";
   }
 
-  @PreAuthorize("hasRole('user')")
-  @RequestMapping(value = "/admin", method = RequestMethod.POST)
-  public String toAdmin() {
-    return "helloAdmin";
+  // @RequestMapping("/login")
+  // public String login() {
+  // return "page/login/login";
+  // }
+
+  // @RequestMapping("/")
+  // public String root() {
+  // return "index";
+  // }
+
+  @RequestMapping("/")
+  public String index(Model model) {
+    Msg msg = new Msg("测试标题", "测试内容", "额外信息，只对管理员显示");
+    model.addAttribute("msg", msg);
+    return "home";
   }
-
-  @RequestMapping("/hello")
-  public String hello() {
-    return "hello";
-  }
-
-//  @RequestMapping("/login")
-//  public String login() {
-//    return "page/login/login";
-//  }
-
   @RequestMapping(value ="/welcome", method = RequestMethod.GET)
   String welcome() {
     return "welcome";
   }
 
-  @RequestMapping(value ="/login", method = RequestMethod.GET)
-  String login(Model model, UserVO user) {
-    model.addAttribute("user", user);
-    return "index";
+  @RequestMapping("/login")
+  public String login(Model model) {
+    return "login";
   }
-  
-  @RequestMapping("/")
-  public String root() {
-    return "index";
-  }
-
   @RequestMapping("/403")
   public String error() {
     return "403";
